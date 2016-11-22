@@ -19,7 +19,7 @@
         "f": 3.3,
         "mountHoles": {
             "clearanceDiameter": 4.8,
-            "pilotHoleDiameter": 3,
+            "pilotHoleDiameter": 3.3,
             "intervalZ": 20,
             "clampingDiameter": 15,
             "screwHeadClearanceDiameter": 11,
@@ -30,7 +30,7 @@
         "threadedMountHoles": {
             "count": 1,
             "interval": 40,
-            "diameter": 3,
+            "diameter": 3.3,
             "offset": 20,
             "threadMeatBump": {
                 "diameter": 6.5,
@@ -45,7 +45,7 @@
             "offset": 0,
             "screwHeadPocket": {
                 "diameter": 9.1,
-                "depth": 0.9
+                "depth": 0
             }
         }
     },

@@ -29,7 +29,7 @@ $panelClip->f = 2.2 * $mm;
 
 
 $panelClip->mountHoles->clearanceDiameter = 4.8 * $mm; //fix me
-$panelClip->mountHoles->pilotHoleDiameter = 3 * $mm; 
+$panelClip->mountHoles->pilotHoleDiameter = 3.3 * $mm; 
 $panelClip->mountHoles->intervalZ = 20 * $mm; //fix me
 $panelClip->mountHoles->clampingDiameter = 15 * $mm; //fix me
 $panelClip->mountHoles->screwHeadClearanceDiameter = 11 * $mm;
@@ -51,8 +51,8 @@ $panelClip->clearanceMountHoles->offset = 0;
 
 
 $panelClip->clearanceMountHoles->screwHeadPocket->diameter = 9.1 * $mm;//$panelClip->mountHoles->screwHeadClearanceDiameter ;
-$panelClip->clearanceMountHoles->screwHeadPocket->depth = max([0,$panelClip->b - 1.3 * $mm]); //ensures we always retain at least 1.3mm of material under the screw head
-
+$panelClip->clearanceMountHoles->screwHeadPocket->depth = 0;//max([0,$panelClip->b - 1.3 * $mm]); //ensures we always retain at least 1.3mm of material under the screw head
+// "screwHeadPocketSeed_cut" = iif("externalParameters.this.clearanceMountHoles.screwHeadPocket.depth" > 0, "unsuppressed", "suppressed")
 
 $panelClip->threadedMountHoles->threadMeatBump->diameter = 6.5 * $mm;
 $panelClip->threadedMountHoles->threadMeatBump->height = max([0, 4 * $mm - $panelClip->b ]); //ensures we always retain at least 5 * $mm of thread depth.
@@ -65,6 +65,10 @@ $panelClip->threadedMountHoles->threadMeatBump->draftAngle = 40 * $degree; //all
 //  "clearanceMountHoles_pattern" = iif("externalParameters.this.clearanceMountHoles.count" > 1, "unsuppressed", "suppressed")
 //  "threadedMountHoles_pattern" = iif("externalParameters.this.threadedMountHoles.count" > 1, "unsuppressed", "suppressed")
 
+//I was originally thinking about using M4-0.7 pan-head machine screws (either the 10mm length that I have on hand, or, preferrably, 12 mm length), but 
+// I have found that #8 pan-head sheet-metal screws work quite well also, without requiring any tapping.
+// even with the sheetmetal screws, the threadMeatBump is useful because it covers the sharp pointed end of the sheetmetal screw.
+	
 $minimumPanelThickness = 
 	max([
 		2 * $panelClip->c, // this is the condition where the two halves of the clip are pushed together, with the depth stop wings in contact with one another.
