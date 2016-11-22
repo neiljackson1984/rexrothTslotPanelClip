@@ -18,12 +18,35 @@
         "e": 26,
         "f": 3.3,
         "mountHoles": {
-            "offsetYFromBeam": 10,
-            "diameter": 4.2,
+            "clearanceDiameter": 4.8,
+            "pilotHoleDiameter": 3,
             "intervalZ": 20,
             "clampingDiameter": 15,
+            "screwHeadClearanceDiameter": 11,
+            "offsetYFromBeam": 7.5,
             "count": 2,
             "spanZ": 20
+        },
+        "threadedMountHoles": {
+            "count": 1,
+            "interval": 40,
+            "diameter": 3,
+            "offset": 20,
+            "threadMeatBump": {
+                "diameter": 6.5,
+                "height": 1.8,
+                "draftAngle": 40
+            }
+        },
+        "clearanceMountHoles": {
+            "count": 1,
+            "interval": 40,
+            "diameter": 4.8,
+            "offset": 0,
+            "screwHeadPocket": {
+                "diameter": 9.1,
+                "depth": 0.9
+            }
         }
     },
     "minimumPanelThickness": 4,

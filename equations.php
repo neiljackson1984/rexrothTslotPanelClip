@@ -27,14 +27,43 @@ $panelClip->d = 3.8 * $mm;
 $panelClip->e = $slotVestibuleDepth + $panelClip->protrudingExtentY; 
 $panelClip->f = 2.2 * $mm; 
 
-$panelClip->mountHoles->offsetYFromBeam = $panelClip->protrudingExtentY / 2 ;
-$panelClip->mountHoles->diameter = 4.2 * $mm; //fix me
+
+$panelClip->mountHoles->clearanceDiameter = 4.8 * $mm; //fix me
+$panelClip->mountHoles->pilotHoleDiameter = 3 * $mm; 
 $panelClip->mountHoles->intervalZ = 20 * $mm; //fix me
 $panelClip->mountHoles->clampingDiameter = 15 * $mm; //fix me
+$panelClip->mountHoles->screwHeadClearanceDiameter = 11 * $mm;
+$panelClip->mountHoles->offsetYFromBeam = $panelClip->mountHoles->screwHeadClearanceDiameter / 2 + 2 * $mm;
 
 $panelClip->mountHoles->count = 1 + floor(($panelClip->extentZ - $panelClip->mountHoles->clampingDiameter) / $panelClip->mountHoles->intervalZ);
+$panelClip->mountHoles->count = 2 * floor($panelClip->mountHoles->count/2); //ensure that there are an even number of mountHoles (so that the alternating clearnce/threaded pattern will allow the part to be hermaphroditic (although not necessarily symmetrical).)
+$panelClip->threadedMountHoles->count = $panelClip->mountHoles->count/2;
 $panelClip->mountHoles->spanZ = $panelClip->mountHoles->intervalZ * ($panelClip->mountHoles->count - 1);
+$panelClip->threadedMountHoles->interval = 2 * $panelClip->mountHoles->intervalZ;
+$panelClip->clearanceMountHoles = clone $panelClip->threadedMountHoles;
 
+$panelClip->threadedMountHoles->diameter = $panelClip->mountHoles->pilotHoleDiameter;
+$panelClip->clearanceMountHoles->diameter = $panelClip->mountHoles->clearanceDiameter;
+
+//the following two values should be zero and $panelClip->mountHoles->intervalZ, in either order.  The order determines the chirality of the part (i.e. reversing the order would produce a mirror-image version of the part.)
+$panelClip->threadedMountHoles->offset = $panelClip->mountHoles->intervalZ;
+$panelClip->clearanceMountHoles->offset = 0;
+
+
+$panelClip->clearanceMountHoles->screwHeadPocket->diameter = 9.1 * $mm;//$panelClip->mountHoles->screwHeadClearanceDiameter ;
+$panelClip->clearanceMountHoles->screwHeadPocket->depth = max([0,$panelClip->b - 1.3 * $mm]); //ensures we always retain at least 1.3mm of material under the screw head
+
+
+$panelClip->threadedMountHoles->threadMeatBump->diameter = 6.5 * $mm;
+$panelClip->threadedMountHoles->threadMeatBump->height = max([0, 4 * $mm - $panelClip->b ]); //ensures we always retain at least 5 * $mm of thread depth.
+$panelClip->threadedMountHoles->threadMeatBump->draftAngle = 40 * $degree; //allows us to 3d-print the bump without supports.
+// = "externalParameters.this.threadedMountHoles.threadMeatBump.diameter"
+
+//  = "externalParameters.this.extentZ"/2 - "externalParameters.this.mountHoles.spanZ"/2 + "externalParameters.this.threadedMountHoles.offset"
+//  = "externalParameters.this.extentZ"/2 - "externalParameters.this.mountHoles.spanZ"/2 + "externalParameters.this.clearanceMountHoles.offset"
+
+//  "clearanceMountHoles_pattern" = iif("externalParameters.this.clearanceMountHoles.count" > 1, "unsuppressed", "suppressed")
+//  "threadedMountHoles_pattern" = iif("externalParameters.this.threadedMountHoles.count" > 1, "unsuppressed", "suppressed")
 
 $minimumPanelThickness = 
 	max([
