@@ -12,7 +12,7 @@
    "backlashFeedback" : 0.90,
    "backlashX" : 0.0,
    "backlashY" : 0.090,
-   "bedZOffset" : 0.0,
+   "bedZOffset" : -0.15,
    "bridgeAnchorMinimumLength" : 0.80,
    "bridgeAnchorWidth" : 0.80,
    "bridgeMaximumLength" : 80.0,
