@@ -1,0 +1,31 @@
+{
+    "mm": 1,
+    "inch": 25.4,
+    "degree": 1,
+    "radian": 57.295779513082,
+    "slotWidth": 10,
+    "tunnelWidth": 20.1,
+    "slotVestibuleDepth": 6,
+    "slotDepth": 13,
+    "minimumAllowedShoulderOverlapX": 2,
+    "panelClip": {
+        "protrudingExtentY": 20,
+        "extentZ": 40,
+        "a": 4.4,
+        "b": 2.2,
+        "c": 2,
+        "d": 3.8,
+        "e": 26,
+        "f": 3.3,
+        "mountHoles": {
+            "offsetYFromBeam": 10,
+            "diameter": 4.2,
+            "intervalZ": 20,
+            "clampingDiameter": 15,
+            "count": 2,
+            "spanZ": 20
+        }
+    },
+    "minimumPanelThickness": 4,
+    "maximumPanelThickness": 5.6
+}

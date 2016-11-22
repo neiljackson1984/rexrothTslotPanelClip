@@ -1,0 +1,1 @@
+The contents of this profile folder were retrieved from "C:\Users\Admin\My Things\Profiles\__from_project_folder" on 2016/11/21 16:52:32.59 by "U:\2016-11-21 rexroth t-slot panel clip\3dPrinting\panelClip\captureProfile.bat". 
